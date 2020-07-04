@@ -1,7 +1,8 @@
 const merge = require('webpack-merge');
 // const webpack = require('webpack');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HardSourcePlugin = require('hard-source-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanPlugin } = require('clean-webpack-plugin');
 const webpackBaseConf = require('./webpack.base.conf');
 
 module.exports = merge(webpackBaseConf, {
@@ -34,8 +35,9 @@ module.exports = merge(webpackBaseConf, {
         },
     },
     plugins: [
-        new CleanWebpackPlugin(),
-        new HardSourceWebpackPlugin(), //更好的代替者DLL选择hard-source-webpack-plugin
+        new CleanPlugin(),
+        new HardSourcePlugin(), //更好的代替者DLL选择hard-source-webpack-plugin
+        new OptimizeCssAssetsPlugin(), //压缩CSS
     ],
     devtool: 'nosources-source-map'
 })

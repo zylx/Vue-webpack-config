@@ -17,7 +17,7 @@ module.exports = merge(webpackBaseConf, {
         },
         // historyApiFallback: true,
         historyApiFallback: {
-            index: resolve(__dirname, '../index.html')
+            index: resolve(__dirname, '/index.html')
         },
         hot: true, //开启热点
         open: false, //自动打开浏览器
