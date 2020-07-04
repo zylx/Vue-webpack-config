@@ -40,7 +40,7 @@ module.exports = {
             },
             {
                 //图片解析
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpe?g|gif|svg)$/,
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -88,6 +88,5 @@ module.exports = {
             '@': resolve(__dirname, '../src')
         },
         extensions: ['*', '.js', '.json', '.vue'] // 引入依赖或者文件的时候可以省略后缀
-    },
-    devtool: 'source-map'
+    }
 }

@@ -41,5 +41,5 @@ module.exports = merge(webpackBaseConf, {
         //     }
         // }
     },
-    devtool: 'inline-source-map'
+    devtool: 'cheap-module-eval-source-map'
 })
