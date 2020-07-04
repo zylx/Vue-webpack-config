@@ -13,5 +13,10 @@
                 }
             }
         ]
+    ],
+    "plugins": [
+        // 配置使之支持 async...await... 语法
+        "@babel/plugin-transform-regenerator",
+        "@babel/plugin-transform-runtime"
     ]
 }
