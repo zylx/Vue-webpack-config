@@ -39,5 +39,5 @@ module.exports = merge(webpackBaseConf, {
     new HardSourcePlugin(), // 更好的代替者DLL选择hard-source-webpack-plugin
     new OptimizeCssAssetsPlugin(), // 压缩CSS
   ],
-  devtool: 'nosources-source-map'
+  devtool: 'cheap-module-source-map'
 });

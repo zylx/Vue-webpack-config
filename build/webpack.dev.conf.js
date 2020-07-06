@@ -1,13 +1,14 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const webpackBaseConf = require('./webpack.base.conf');
+const webpackBaseConf = require('./webpack.base.conf.js');
 
 module.exports = merge(webpackBaseConf, {
   // 开发模式，webpack会根据该模式使用相应的编译配置
   mode: 'development',
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(), // 显示被替换模块的名称
   ],
   devServer: {
     port: 8080,
@@ -27,7 +28,12 @@ module.exports = merge(webpackBaseConf, {
     inline: true, // 开启页面自动刷新
     lazy: false, // 不启动懒加载
     watchOptions: {
-      aggregateTimeout: 300
+      // 不监听的文件或文件夹，支持正则匹配
+      ignored: /node_modules/,
+      // 监听到变化后等300ms再去执行动作
+      aggregateTimeout: 300,
+      // 默认每秒询问1000次
+      poll: 1000
     },
     // 配置解决跨域问题
     // proxy: {

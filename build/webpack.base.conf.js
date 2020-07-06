@@ -12,13 +12,13 @@ module.exports = {
   output: {
     filename: 'js/[name].[hash:8].js',
     path: resolve(__dirname, '../dist'),
-    // publicPath: ''
+    publicPath: ''
   },
   module: {
     rules: [{
       test: /\.jsx?$/,
       use: [
-        'babel-loader',
+        'babel-loader?cacheDirectory',
         {
           loader: 'eslint-loader',
           options: {
@@ -26,6 +26,7 @@ module.exports = {
           }
         }
       ],
+      include: [resolve(__dirname, '../src')], // 只对项目根目录下的 src目录中的文件采用 babel-loader
       exclude: /node_modules/
     },
     {
@@ -96,10 +97,12 @@ module.exports = {
     })
   ],
   resolve: {
+    // 使用绝对路径指明第三方模块存放的位置，以减少搜索步骤
+    modules: [resolve(__dirname, '../node_modules')],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve(__dirname, '../src')
     },
-    extensions: ['*', '.js', '.json', '.vue'] // 引入依赖或者文件的时候可以省略后缀
+    extensions: ['.js', '.vue', '.json'] // 引入依赖或者文件的时候可以省略后缀
   }
 };
