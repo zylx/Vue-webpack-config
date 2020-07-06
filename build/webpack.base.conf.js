@@ -23,7 +23,7 @@ module.exports = {
             {
                 test: /\.(css|styl(us))$/,
                 use: [
-                     // vue-style-loader会应用到普通的 `.css` 文件，以及 `.vue` 文件中的 `<style>` 块
+                    // vue-style-loader会应用到普通的 `.css` 文件，以及 `.vue` 文件中的 `<style>` 块
                     isDev ? 'vue-style-loader' : {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
@@ -74,6 +74,12 @@ module.exports = {
     },
     plugins: [
         new HtmlPlugin({
+            title: 'Vue',
+            minify: { // 压缩HTML文件
+                removeComments: true, // 移除HTML中的注释
+                collapseWhitespace: true, // 删除空白符与换行符
+                minifyCSS: true // 压缩内联css
+            },
             template: resolve(__dirname, '../index.html')
         }),
         new VueLoaderPlugin(),
