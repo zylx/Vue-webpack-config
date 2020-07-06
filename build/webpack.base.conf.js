@@ -12,7 +12,7 @@ module.exports = {
     output: {
         filename: 'js/[name].[hash:8].js',
         path: resolve(__dirname, '../dist'),
-        // pubilcPath: ''
+        // publicPath: ''
     },
     module: {
         rules: [{
