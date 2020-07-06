@@ -5,15 +5,12 @@
 </template>
 
 <script>
-
 export default {
     name: "App",
-	data: {
-		return {
-			message: 'Hello Vue!'
-		}
-	}
+    data() {
+        return {
+            message: "Hello Vue!",
+        };
+    },
 };
-
 </script>
-
